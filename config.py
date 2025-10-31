@@ -29,24 +29,25 @@ WAYPOINT_REACH_THRESHOLD = 5.0  # How close to get to a waypoint (m)
 MAX_MOTOR_SPEED = 6.0  # Max motor speed (m/s)
 
 # --- Environment Settings ---
-CONTOUR_LEVEL_METERS = -2.0  # The "shoreline" depth for collision
+CONTOUR_LEVEL_METERS = -2.0
 
 # --- MCTS Settings ---
-MCTS_ITERATIONS = 100  # Keep this high
+MCTS_ITERATIONS = 50  # Keep this high
 MCTS_EXPLORATION_CONSTANT = 1.414
 MCTS_SIMULATION_DEPTH = 25  # Keep this high
 
-## --- MCTS Reward Weights (These are for the *real* reward) ---
+# --- MCTS Reward Weights (NEW BALANCED VALUES) ---
 W_PROGRESS_PRIMARY = 10.0
 W_PROGRESS_SECONDARY = 2.0
-W_EXPLORE = 0.5
-W_OUTSIDE_POLY_PENALTY = 20.0
-W_CROSS_TRACK_PENALTY = 1.0
+W_EXPLORE = 0.1
 
-## --- Rollout Policy Weights (These are for the *imagination*) ---
-# [REMOVED] W_GRADIENT is no longer needed. Our policy is smarter.
-# W_GRADIENT = 2.0
-W_TARGET_POLICY = 1.0       # (Rollout policy) How strongly to favor the target
+# --- MCTS Penalties ---
+W_CROSS_TRACK_PENALTY = 0.5
+W_OUTSIDE_POLY_PENALTY = 1.0
+
+# --- Rollout Policy Weights ---
+W_DANGER_PENALTY = 2.0
+DANGER_ZONE_START_METERS = .5
 
 # --- Plotting Settings ---
 PLOT_BUFFER = 20.0  # Buffer around waypoints for zoom
